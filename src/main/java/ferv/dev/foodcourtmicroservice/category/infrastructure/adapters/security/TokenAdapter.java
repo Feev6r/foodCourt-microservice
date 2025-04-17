@@ -8,8 +8,6 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
@@ -36,13 +34,6 @@ public class TokenAdapter implements TokenServicePort {
     public String extractRoles(String token) {
         Claims claims = extractAllClaims(token);
         return claims.get("roles", String.class);
-    }
-
-    @Override
-    public Long getUserIdBySecurityContext(){
-
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); // contexto de seguridad
-        return Long.parseLong(authentication.getName());
     }
 
     private <T> T extractClaim(String token, Function<Claims, T> claimsResolver){
