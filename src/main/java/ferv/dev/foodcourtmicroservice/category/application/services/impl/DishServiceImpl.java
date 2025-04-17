@@ -1,5 +1,6 @@
 package ferv.dev.foodcourtmicroservice.category.application.services.impl;
 
+import ferv.dev.foodcourtmicroservice.category.application.dto.request.DishModified;
 import ferv.dev.foodcourtmicroservice.category.application.dto.request.DishRequest;
 import ferv.dev.foodcourtmicroservice.category.application.mappers.DishRequestMapper;
 import ferv.dev.foodcourtmicroservice.category.application.services.DishService;
@@ -17,5 +18,10 @@ public class DishServiceImpl implements DishService {
     @Override
     public void createDish(DishRequest request) {
         dishPort.createDish(dishRequestMapper.toModel(request));
+    }
+
+    @Override
+    public void modifyDish(DishModified request) {
+        dishPort.modifyDish(dishRequestMapper.toModel(request));
     }
 }
