@@ -11,6 +11,4 @@ public class Restaurant {
     private String phoneNumber;
     private String urlLogo;
     private Long ownerId;
-    private List<String> dishes;
-
 }
