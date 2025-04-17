@@ -6,5 +6,6 @@ import ferv.dev.foodcourtmicroservice.category.infrastructure.entities.DishEntit
 public interface DishMapper {
 
     DishEntity toEntity(Dish dish);
+    Dish toModel(DishEntity dish);
 
 }
