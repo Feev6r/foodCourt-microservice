@@ -32,9 +32,6 @@ public class RestaurantEntity {
     private String urlLogo;
     private Long ownerId;
 
-    @OneToMany(mappedBy = "restaurant")
-    private List<DishEntity> dishes;
-
     @ElementCollection
     @CollectionTable(
             name = "employeesIdList",
