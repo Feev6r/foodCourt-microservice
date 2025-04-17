@@ -39,4 +39,11 @@ public class RestaurantAdapter implements RestaurantPersistencePort {
                 .orElseThrow(RuntimeException::new));
         //TODO MAKE A CUSTOM EXEPTION TO RETURN HERE
     }
+
+    @Override
+    public Restaurant getRestaurantByOwner(Long id) {
+        return restaurantMapper.toModel(repository.findByOwnerId(id)
+                .orElseThrow(RuntimeException::new));
+        //TODO MAKE A CUSTOM EXEPTION TO RETURN HERE
+    }
 }

@@ -9,4 +9,5 @@ public interface RestaurantPersistencePort {
     void saveRestaurant(Restaurant restaurant);
     List<Restaurant> getRestaurants(Integer page, Integer size, boolean orderAsc);
     Restaurant getRestaurant(Long id);
+    Restaurant getRestaurantByOwner(Long id);
 }

@@ -5,4 +5,5 @@ import ferv.dev.foodcourtmicroservice.category.domain.models.Dish;
 public interface DishPersistencePort {
 
     void saveDish(Dish dish);
+    Dish getDish(Long id);
 }

@@ -18,4 +18,10 @@ public class DishAdapter implements DishPersistencePort {
     public void saveDish(Dish dish) {
         dishRepository.save(dishMapper.toEntity(dish));
     }
+
+    @Override
+    public Dish getDish(Long id) {
+        return dishMapper.toModel(dishRepository.findById(id)
+                .orElseThrow(RuntimeException::new));
+    }
 }
