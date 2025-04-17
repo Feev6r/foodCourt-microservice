@@ -33,6 +33,12 @@ public class TokenAdapter implements TokenServicePort {
     }
 
     @Override
+    public String extractRoles(String token) {
+        Claims claims = extractAllClaims(token);
+        return claims.get("roles", String.class);
+    }
+
+    @Override
     public Long getUserIdBySecurityContext(){
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); // contexto de seguridad
@@ -59,13 +65,7 @@ public class TokenAdapter implements TokenServicePort {
     }
 
     @Override
-    public boolean isTokenValid(String token, String username) {
-        final String extractedUsername = extractUsername(token);
-        return (extractedUsername.equals(username) && !isTokenExpired(token));
-    }
-
-
-    private boolean isTokenExpired(String token) {
+    public boolean isTokenExpired(String token) {
         return extractExpiration(token).before(new Date());
     }
 
