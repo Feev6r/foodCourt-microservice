@@ -21,7 +21,7 @@ public class OrdersController {
 
     @PostMapping
     public ResponseEntity<Void> createOrder(@Valid OrderRequest request){
-
+        ordersService.makeOrder(request);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 

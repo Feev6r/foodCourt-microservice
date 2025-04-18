@@ -12,7 +12,7 @@ import java.util.List;
 public class OrderRequest {
 
     @NotNull
-    private RestaurantResponse restaurant;
+    private Long restaurantId;
     private List<DishOrderRequest> order;
 
 }

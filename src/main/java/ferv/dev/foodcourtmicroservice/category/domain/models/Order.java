@@ -7,7 +7,13 @@ public class Order {
     private Long id;
     private Restaurant restaurant;
     private List<DishOrder> dishOrders;
-    private OrderStates state;
+    private OrderStates state = OrderStates.PENDING;
+
+    public Order(Long id, Restaurant restaurant, List<DishOrder> dishOrders) {
+        this.id = id;
+        this.restaurant = restaurant;
+        this.dishOrders = dishOrders;
+    }
 
     public Order(Long id, Restaurant restaurant, List<DishOrder> dishOrders, OrderStates state) {
         this.id = id;
