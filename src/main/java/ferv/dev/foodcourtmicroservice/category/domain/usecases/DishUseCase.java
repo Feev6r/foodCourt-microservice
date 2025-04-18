@@ -8,6 +8,7 @@ import ferv.dev.foodcourtmicroservice.category.domain.ports.out.DishPersistenceP
 import ferv.dev.foodcourtmicroservice.category.domain.ports.out.RestaurantPersistencePort;
 
 import java.util.List;
+import java.util.Objects;
 
 public class DishUseCase implements DishPort {
 
@@ -26,16 +27,16 @@ public class DishUseCase implements DishPort {
         Long ownerId = authPort.getUserIdBySecurityContext();
         Restaurant restaurant = restaurantPersistencePort.getRestaurantByOwner(ownerId);
 
-        dish.setRestaurantId(restaurant.getId());
+        dish.setRestaurant(restaurant);
         dishPersistencePort.saveDish(dish);
     }
 
     @Override
     public void modifyDish(Dish modifiedDish) {
         Long ownerId = authPort.getUserIdBySecurityContext();
-        Restaurant restaurant = restaurantPersistencePort.getRestaurant(modifiedDish.getRestaurantId());
+        Restaurant restaurant = modifiedDish.getRestaurant();
 
-        if(restaurant.getOwnerId() != ownerId){
+        if(!Objects.equals(restaurant.getOwnerId(), ownerId)){
             throw new RuntimeException("Current dish is not from owners restaurant");
         }
 

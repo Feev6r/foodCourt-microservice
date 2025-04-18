@@ -24,4 +24,9 @@ public class RestaurantUseCase implements RestaurantPort {
         return restaurantPersistencePort.getRestaurants(page, size, orderAsc);
     }
 
+    @Override
+    public Restaurant getRestaurant(Long id) {
+        return restaurantPersistencePort.getRestaurant(id);
+    }
+
 }
