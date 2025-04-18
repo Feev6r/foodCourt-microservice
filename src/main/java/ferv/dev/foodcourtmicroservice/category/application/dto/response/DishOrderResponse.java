@@ -5,8 +5,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class RestaurantResponse {
-    Long id;
-    String name;
-    String urlLogo;
+public class DishOrderResponse {
+
+    Integer quantity;
+    DishResponse dish;
+
 }
