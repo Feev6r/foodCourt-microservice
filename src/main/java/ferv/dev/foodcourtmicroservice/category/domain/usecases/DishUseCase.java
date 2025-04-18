@@ -51,4 +51,9 @@ public class DishUseCase implements DishPort {
     public List<Dish> listDishes(Integer page, Integer size, boolean orderAsc, Long restaurantId, Long categoryId) {
         return dishPersistencePort.listDishes(page, size, orderAsc, restaurantId, categoryId);
     }
+
+    @Override
+    public Dish getDish(Long id) {
+        return dishPersistencePort.getDish(id);
+    }
 }
