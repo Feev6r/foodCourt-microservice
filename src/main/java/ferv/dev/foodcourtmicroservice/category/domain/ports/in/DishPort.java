@@ -9,6 +9,5 @@ public interface DishPort {
     void createDish(Dish dish);
     void modifyDish(Dish dish);
     List<Dish> listDishes(Integer page, Integer size, boolean orderAsc, Long restaurantId, Long categoryId);
-
-
+    Dish getDish(Long id);
 }
