@@ -8,18 +8,16 @@ public class Dish {
     private String description;
     private String urlImage;
     private boolean isAvailable = true;
-    private String restaurantName;
     private Long restaurantId;
     private Category category;
 
-    public Dish(Long id, String name, Double price, String description, String urlImage, boolean isAvailable, String restaurantName, Long restaurantId, Category category) {
+    public Dish(Long id, String name, Double price, String description, String urlImage, boolean isAvailable, Long restaurantId, Category category) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.description = description;
         this.urlImage = urlImage;
         this.isAvailable = isAvailable;
-        this.restaurantName = restaurantName;
         this.restaurantId = restaurantId;
         this.category = category;
     }
@@ -70,14 +68,6 @@ public class Dish {
 
     public void setAvailable(boolean available) {
         isAvailable = available;
-    }
-
-    public String getRestaurantName() {
-        return restaurantName;
-    }
-
-    public void setRestaurantName(String restaurantName) {
-        this.restaurantName = restaurantName;
     }
 
     public Long getRestaurantId() {

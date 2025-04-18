@@ -7,6 +7,8 @@ import ferv.dev.foodcourtmicroservice.category.domain.ports.out.AuthPort;
 import ferv.dev.foodcourtmicroservice.category.domain.ports.out.DishPersistencePort;
 import ferv.dev.foodcourtmicroservice.category.domain.ports.out.RestaurantPersistencePort;
 
+import java.util.List;
+
 public class DishUseCase implements DishPort {
 
     private final DishPersistencePort dishPersistencePort;
@@ -43,5 +45,10 @@ public class DishUseCase implements DishPort {
         if(modifiedDish.getPrice() != null) oldDish.setPrice(modifiedDish.getPrice());
 
         dishPersistencePort.saveDish(oldDish);
+    }
+
+    @Override
+    public List<Dish> listDishes(Integer page, Integer size, boolean orderAsc, Long restaurantId, Long categoryId) {
+        return dishPersistencePort.listDishes(page, size, orderAsc, restaurantId, categoryId);
     }
 }

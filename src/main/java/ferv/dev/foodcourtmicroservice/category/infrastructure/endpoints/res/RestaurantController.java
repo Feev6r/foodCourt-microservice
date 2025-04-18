@@ -14,20 +14,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/restaurant")
+@RequestMapping("/restaurants")
 @RequiredArgsConstructor
 @Validated
 public class RestaurantController {
 
     private final RestaurantService restaurantService;
 
-    @PostMapping("/create")
+    @PostMapping
     public ResponseEntity<Void> createRestaurant(RestaurantRequest request){
         restaurantService.createRestaurant(request);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @GetMapping("list")
+    @GetMapping
     public ResponseEntity<List<RestaurantResponse>> listRestaurants(
             @RequestParam(defaultValue = "0") @Min(0) int page,
             @RequestParam(defaultValue = "5") @Min(1) int size,
