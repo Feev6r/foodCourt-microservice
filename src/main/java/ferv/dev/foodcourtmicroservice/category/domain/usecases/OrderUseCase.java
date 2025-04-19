@@ -1,8 +1,11 @@
 package ferv.dev.foodcourtmicroservice.category.domain.usecases;
 
 import ferv.dev.foodcourtmicroservice.category.domain.models.Order;
+import ferv.dev.foodcourtmicroservice.category.domain.models.OrderSearchCriteria;
 import ferv.dev.foodcourtmicroservice.category.domain.ports.in.OrderPort;
 import ferv.dev.foodcourtmicroservice.category.domain.ports.out.OrderPersistencePort;
+
+import java.util.List;
 
 public class OrderUseCase implements OrderPort {
 
@@ -15,5 +18,10 @@ public class OrderUseCase implements OrderPort {
     @Override
     public void makeOrder(Order order) {
         orderPersistencePort.saveOrder(order);
+    }
+
+    @Override
+    public List<Order> listOrders(OrderSearchCriteria searchCriteria) {
+        return orderPersistencePort.getOrders(searchCriteria);
     }
 }

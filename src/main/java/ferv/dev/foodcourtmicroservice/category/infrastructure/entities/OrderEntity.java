@@ -30,6 +30,6 @@ public class OrderEntity {
     private List<DishOrderEntity> dishOrders = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
-    private OrderStates states;
+    private OrderStates state;
 
 }
