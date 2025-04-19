@@ -2,7 +2,7 @@ package ferv.dev.foodcourtmicroservice.category.application.services.impl;
 
 import ferv.dev.foodcourtmicroservice.category.application.dto.request.RestaurantRequest;
 import ferv.dev.foodcourtmicroservice.category.application.dto.response.RestaurantResponse;
-import ferv.dev.foodcourtmicroservice.category.application.mappers.RestaurantRequestMapper;
+import ferv.dev.foodcourtmicroservice.category.application.mappers.RestaurantDtoMapper;
 import ferv.dev.foodcourtmicroservice.category.application.services.RestaurantService;
 import ferv.dev.foodcourtmicroservice.category.domain.ports.in.RestaurantPort;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +15,7 @@ import java.util.List;
 public class RestaurantServiceImpl implements RestaurantService {
 
     private final RestaurantPort restaurantPort;
-    private final RestaurantRequestMapper restaurantRequestMapper;
+    private final RestaurantDtoMapper restaurantRequestMapper;
 
     @Override
     public void createRestaurant(RestaurantRequest request) {

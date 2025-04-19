@@ -14,3 +14,7 @@ public class DishModified {
     private String description;
     private boolean isAvailable;
 }
+
+//escoger el restaurante del owner
+//buscar el plato que ya existe
+//ver su restaurante

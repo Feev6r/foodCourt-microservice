@@ -35,7 +35,7 @@ public class RestaurantEntity {
     @ElementCollection
     @CollectionTable(
             name = "employeesIdList",
-            joinColumns = @JoinColumn(name = "employeeId"))
+            joinColumns = @JoinColumn(name = "employee_Id"))
     @Column(name = "employeesId")
     private List<Long> employeesId;
 

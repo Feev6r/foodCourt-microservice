@@ -7,7 +7,7 @@ import ferv.dev.foodcourtmicroservice.category.domain.models.Dish;
 
 import java.util.List;
 
-public interface DishRequestMapper {
+public interface DishDtoMapper {
 
     Dish toModel(DishRequest request);
     Dish toModel(DishModified request);

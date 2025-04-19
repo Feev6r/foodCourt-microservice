@@ -3,7 +3,7 @@ package ferv.dev.foodcourtmicroservice.category.domain.usecases;
 import ferv.dev.foodcourtmicroservice.category.domain.models.Dish;
 import ferv.dev.foodcourtmicroservice.category.domain.models.Restaurant;
 import ferv.dev.foodcourtmicroservice.category.domain.ports.in.DishPort;
-import ferv.dev.foodcourtmicroservice.category.domain.ports.out.AuthPort;
+import ferv.dev.foodcourtmicroservice.category.domain.ports.out.AuthServicePort;
 import ferv.dev.foodcourtmicroservice.category.domain.ports.out.DishPersistencePort;
 import ferv.dev.foodcourtmicroservice.category.domain.ports.out.RestaurantPersistencePort;
 
@@ -14,17 +14,17 @@ public class DishUseCase implements DishPort {
 
     private final DishPersistencePort dishPersistencePort;
     private final RestaurantPersistencePort restaurantPersistencePort;
-    private final AuthPort authPort;
+    private final AuthServicePort authServicePort;
 
-    public DishUseCase(DishPersistencePort dishPersistencePort, RestaurantPersistencePort restaurantPersistencePort, AuthPort authPort) {
+    public DishUseCase(DishPersistencePort dishPersistencePort, RestaurantPersistencePort restaurantPersistencePort, AuthServicePort authServicePort) {
         this.dishPersistencePort = dishPersistencePort;
         this.restaurantPersistencePort = restaurantPersistencePort;
-        this.authPort = authPort;
+        this.authServicePort = authServicePort;
     }
 
     @Override
     public void createDish(Dish dish) {
-        Long ownerId = authPort.getUserIdBySecurityContext();
+        Long ownerId = authServicePort.getUserIdBySecurityContext();
         Restaurant restaurant = restaurantPersistencePort.getRestaurantByOwner(ownerId);
 
         dish.setRestaurant(restaurant);
@@ -33,14 +33,15 @@ public class DishUseCase implements DishPort {
 
     @Override
     public void modifyDish(Dish modifiedDish) {
-        Long ownerId = authPort.getUserIdBySecurityContext();
-        Restaurant restaurant = modifiedDish.getRestaurant();
+        //Get the owner id and restaurant of the modified dish in order to verify if the dish is in the owner's restaurant
+        Long ownerId = authServicePort.getUserIdBySecurityContext();
 
-        if(!Objects.equals(restaurant.getOwnerId(), ownerId)){
+        Dish oldDish = dishPersistencePort.getDish(modifiedDish.getId());
+
+        if(!Objects.equals(oldDish.getRestaurant().getOwnerId(), ownerId)){
             throw new RuntimeException("Current dish is not from owners restaurant");
         }
 
-        Dish oldDish = dishPersistencePort.getDish(modifiedDish.getId());
         if(modifiedDish.isAvailable() != oldDish.isAvailable()) oldDish.setAvailable(modifiedDish.isAvailable());
         if(modifiedDish.getDescription() != null) oldDish.setDescription(modifiedDish.getDescription());
         if(modifiedDish.getPrice() != null) oldDish.setPrice(modifiedDish.getPrice());
