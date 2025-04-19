@@ -6,6 +6,7 @@ import ferv.dev.foodcourtmicroservice.category.application.dto.response.OrderRes
 
 import ferv.dev.foodcourtmicroservice.category.domain.models.DishOrder;
 import ferv.dev.foodcourtmicroservice.category.domain.models.Order;
+import ferv.dev.foodcourtmicroservice.category.domain.models.OrderStates;
 import ferv.dev.foodcourtmicroservice.category.domain.models.Restaurant;
 import ferv.dev.foodcourtmicroservice.category.domain.ports.in.RestaurantPort;
 import lombok.RequiredArgsConstructor;
@@ -31,7 +32,7 @@ public class OrderDtoMapper {
              dishOrders.add(dishOrderMapper.toDish(dishOrderRequest));
         }
 
-        return new Order(null, restaurant, dishOrders);
+        return new Order(null, restaurant, dishOrders, OrderStates.PENDING);
     }
 
     public OrderResponse toOrderResponse(Order order){

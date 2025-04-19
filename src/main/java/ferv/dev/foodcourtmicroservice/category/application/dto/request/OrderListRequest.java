@@ -3,7 +3,11 @@ package ferv.dev.foodcourtmicroservice.category.application.dto.request;
 import ferv.dev.foodcourtmicroservice.category.domain.models.OrderStates;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class OrderListRequest {
 
     @Min(0)
