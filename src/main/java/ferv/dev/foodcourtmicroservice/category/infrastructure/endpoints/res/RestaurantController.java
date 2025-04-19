@@ -4,6 +4,7 @@ package ferv.dev.foodcourtmicroservice.category.infrastructure.endpoints.res;
 import ferv.dev.foodcourtmicroservice.category.application.dto.request.RestaurantRequest;
 import ferv.dev.foodcourtmicroservice.category.application.dto.response.RestaurantResponse;
 import ferv.dev.foodcourtmicroservice.category.application.services.RestaurantService;
+import ferv.dev.foodcourtmicroservice.commons.configurations.utils.constants.ApiPaths;
 import jakarta.validation.constraints.Min;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/restaurants")
+@RequestMapping(ApiPaths.RESTAURANTS)
 @RequiredArgsConstructor
 @Validated
 public class RestaurantController {

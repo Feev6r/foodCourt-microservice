@@ -6,6 +6,7 @@ import ferv.dev.foodcourtmicroservice.category.application.dto.request.DishModif
 import ferv.dev.foodcourtmicroservice.category.application.dto.request.DishRequest;
 import ferv.dev.foodcourtmicroservice.category.application.dto.response.DishResponse;
 import ferv.dev.foodcourtmicroservice.category.application.services.DishService;
+import ferv.dev.foodcourtmicroservice.commons.configurations.utils.constants.ApiPaths;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/dishes")
+@RequestMapping(ApiPaths.DISHES)
 @RequiredArgsConstructor
 @Validated
 public class DishController {

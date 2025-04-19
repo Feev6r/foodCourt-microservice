@@ -4,6 +4,7 @@ import ferv.dev.foodcourtmicroservice.category.application.dto.request.OrderList
 import ferv.dev.foodcourtmicroservice.category.application.dto.request.OrderRequest;
 import ferv.dev.foodcourtmicroservice.category.application.dto.response.OrderResponse;
 import ferv.dev.foodcourtmicroservice.category.application.services.OrdersService;
+import ferv.dev.foodcourtmicroservice.commons.configurations.utils.constants.ApiPaths;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/orders")
+@RequestMapping(ApiPaths.ORDERS)
 @RequiredArgsConstructor
 @Validated
 public class OrdersController {
